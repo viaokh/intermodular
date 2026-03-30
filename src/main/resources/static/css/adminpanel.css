@@ -1,0 +1,215 @@
+/* paleta de colores */
+
+:root {
+  --color-primary:    #2563EB;  /* azul principal */
+  --color-primary-dark: #1D4ED8; /* hover y activo */
+  --color-sidebar-bg: #1E3A5F;  /* fondo sidebar, azul oscuro */
+  --color-text-light: #F1F5F9;  /* texto sobre fondo oscuro */
+  --color-bg:         #F8FAFC;  /* fondo del main */
+  --color-header-bg:  #1E40AF;  /* header */
+}
+
+
+
+/* El cuerpo con grid */
+
+body{
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 220px 1fr;
+    height: 100vh;
+    margin: 0;
+}
+
+
+/* Header */
+
+header {
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background-color: var(--color-header-bg);
+  grid-column: 1 / -1;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text-light);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+    /* DropDown del Header */
+.user-menu {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  list-style: none;
+  padding: 8px 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 160px;
+}
+
+.dropdown.visible {
+  display: block;
+}
+
+.dropdown li a,
+.dropdown li button {
+  display: block;
+  padding: 10px 16px;
+  width: 100%;
+  text-decoration: none;
+  color: #333;
+}
+
+
+
+/*El sidebar*/
+
+aside{
+    background-color: var(--color-sidebar-bg);
+    height: 100%;
+    overflow-y: auto;
+}
+
+    /*La lista del panel*/
+
+aside ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+    /*Opciones del panel*/
+
+aside a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-left: 4px solid transparent;
+    color: var(--color-text-light);
+    text-decoration: none;
+
+}
+
+aside a img {
+  width: 20px;
+  height: 20px;
+}
+
+aside a:hover {
+  background-color: var(--color-primary-dark);
+}
+
+aside a.active:hover {
+  background-color: var(--color-primary);
+}
+
+aside a.active {
+  background-color: var(--color-primary);
+}
+
+/*Main*/
+
+main {
+  background-color: var(--color-bg);
+  padding: 24px;
+  overflow-y: auto;
+}
+
+main section {
+  display: none;
+}
+
+main section.active {
+  display: block;
+}
+
+    /* Cabecera de la sección */
+.section-header {
+  margin-bottom: 24px;
+}
+
+        /* Tabla de la secion */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.tabla th {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.tabla td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla tr:hover td {
+  background-color: #f1f5f9;
+}
+
+.btn-ver {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.btn-editar {
+  background-color: #F59E0B;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.btn-eliminar {
+  background-color: #EF4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
