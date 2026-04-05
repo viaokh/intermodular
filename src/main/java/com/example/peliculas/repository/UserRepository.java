@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.example.peliculas.entity.User;
+import com.example.peliculas.entity.Usuario;
 import com.example.peliculas.exception.DataAccessException;
 import com.example.peliculas.mapper.RowMapper;
 import com.example.peliculas.mapper.UserMapper;
@@ -25,12 +26,12 @@ public class UserRepository extends BaseRepository<User> {
 
 	@Override
 	public String getTable() {
-		return "users";
+		return "usuarios";
 	}
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "id", "name", "email", "password", "role" };
+		return new String[] { "id_usuario", "nombre", "apellido", "email", "contrasenya", "rol_de_usuario", "telefono", "estado_usuario", "metodo_pago" };
 	}
 	
 	@Override
@@ -43,15 +44,15 @@ public class UserRepository extends BaseRepository<User> {
 		u.setId(id);
 	}
 
-	@Override
-	public Object[] getInsertValues(User u) {
-		return new Object[] { u.getName(), u.getEmail(), u.getPassword(), u.getRole() };
-	}
+    @Override
+    public Object[] getInsertValues(User u) {
+        return new Object[]{u.getNombre(), u.getApellido(), u.getEmail(), u.getContrasenya(), u.getRolDeUsuario(), u.getTelefono(), u.getEstadoUsuario(), u.getMetodoPago()};
+    }
 
-	@Override
-	public Object[] getUpdateValues(User u) {
-		return new Object[] { u.getName(), u.getEmail(), u.getPassword(), u.getRole(), u.getId() };
-	}
+    @Override
+    public Object[] getUpdateValues(User u) {
+        return new Object[]{u.getNombre(), u.getApellido(), u.getEmail(), u.getContrasenya(), u.getRolDeUsuario(), u.getTelefono(), u.getEstadoUsuario(), u.getMetodoPago(), u.getId()};
+    }
 	
 	public UserResponse findResponseById(int id) {
 		
