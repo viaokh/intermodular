@@ -24,17 +24,6 @@ public class User {
         this.metodoPago = metodoPago;
     }
 
-    public User(String nombre, String apellido, String email, String contrasenya, String rolDeUsuario, String telefono, String estadoUsuario, String metodoPago) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.contrasenya = contrasenya;
-        this.rolDeUsuario = rolDeUsuario;
-        this.telefono = telefono;
-        this.estadoUsuario = estadoUsuario;
-        this.metodoPago = metodoPago;
-    }
-
 	public Integer getId() {
 		return id;
 	}

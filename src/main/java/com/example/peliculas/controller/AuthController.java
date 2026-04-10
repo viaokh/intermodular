@@ -40,9 +40,9 @@ public class AuthController extends BaseController {
 			User user = repo.findByEmail(req.email());
 			// System.out.println(encoder.encode("123456"));
 
-			if (user != null && encoder.matches(req.password(), user.getPassword())) {
+			if (user != null && encoder.matches(req.password(), user.getContrasenya())) {
 				session.setAttribute("userId", user.getId());
-				session.setAttribute("role", user.getRole());
+				session.setAttribute("role", user.getRolDeUsuario());
 				return;
 			}
 
@@ -60,7 +60,18 @@ public class AuthController extends BaseController {
 
 			UserRepository repo = new UserRepository(con);
 
-			User user = new User(null, req.name(), req.email(), encoder.encode(req.password()), "USER");
+		    User user = new User(
+		    		null,
+		            req.name(),       
+		            null,            
+		            req.email(),
+		            encoder.encode(req.password()),
+		            "USUARIO",
+		            null,          
+		            "ACTIVO",
+		            null
+
+		        );
 
 			repo.insert(user);
 

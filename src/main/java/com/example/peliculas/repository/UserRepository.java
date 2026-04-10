@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.example.peliculas.entity.User;
-import com.example.peliculas.entity.Usuario;
 import com.example.peliculas.exception.DataAccessException;
 import com.example.peliculas.mapper.RowMapper;
 import com.example.peliculas.mapper.UserMapper;
@@ -31,7 +30,7 @@ public class UserRepository extends BaseRepository<User> {
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "id_usuario", "nombre", "apellido", "email", "contrasenya", "rol_de_usuario", "telefono", "estado_usuario", "metodo_pago" };
+		return new String[] {"nombre", "apellido", "email", "contrasenya", "rol_de_usuario", "telefono", "estado_usuario", "metodo_pago" };
 	}
 	
 	@Override
@@ -57,7 +56,7 @@ public class UserRepository extends BaseRepository<User> {
 	public UserResponse findResponseById(int id) {
 		
 		try {
-			String sql = "SELECT id, name, email, role FROM users WHERE id = ?";
+			String sql = "SELECT id_usuario, nombre, email, rol_de_usuario FROM usuarios WHERE id_usuario = ?";
 			return DB.queryOne(con, sql, new UserResponseMapper(), id);
 		} catch (SQLException e) {
 			throw new DataAccessException("Error al buscar el usuario con id " + id, e);
@@ -67,7 +66,7 @@ public class UserRepository extends BaseRepository<User> {
 	public List<UserResponse> findAllResponses() {
 		
 		try {
-			String sql = "SELECT id, name, email, role FROM users";
+			String sql = "SELECT id_usuario, nombre, email, rol_de_usuario FROM usuarios";
 			return DB.queryMany(con, sql, new UserResponseMapper());
 		} catch (SQLException e) {
 			throw new DataAccessException("Error obteniendo los usuarios", e);
@@ -77,10 +76,10 @@ public class UserRepository extends BaseRepository<User> {
 	public User findByEmail(String email) {
 		
 		try {
-			String sql = "SELECT * FROM users WHERE email = ?";
+			String sql = "SELECT * FROM usuarios WHERE email = ?";
 			return DB.queryOne(con, sql, mapper, email);
 		} catch (SQLException e) {
-			throw new DataAccessException("Error al buscar el usuario con email " + email);
+			throw new DataAccessException("Error al buscar el usuario con email " + email,e);
 		}
 	}
 }

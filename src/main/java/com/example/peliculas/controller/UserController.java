@@ -8,21 +8,21 @@ import javax.sql.DataSource;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.peliculas.entity.Usuario;
+import com.example.peliculas.entity.User;
 import com.example.peliculas.exception.DataAccessException;
-import com.example.peliculas.repository.UsuarioRepository;
+import com.example.peliculas.repository.UserRepository;
 
-public class UsuarioController extends BaseController{
+public class UserController extends BaseController{
 
-	public UsuarioController(DataSource ds) {
+	public UserController(DataSource ds) {
 		super(ds);
 
 	}
 	
 	@GetMapping
-    public List<Usuario> index() {
+    public List<User> index() {
         try (Connection con = ds.getConnection()) {
-            UsuarioRepository repo = new UsuarioRepository(con);
+            UserRepository repo = new UserRepository(con);
             return repo.findAll();
         } catch (SQLException e) {
             throw new DataAccessException("Error al obtener usuarios", e);

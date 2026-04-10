@@ -35,3 +35,21 @@ document.addEventListener('click', function() {
 
 //Secion Usuarios
 document.querySelector('[data-section="users"]').click()
+
+// Logout
+const logoutBtn = document.getElementById('logoutBtn')
+
+logoutBtn.addEventListener('click', async function () {
+    try {
+        await fetch('/api/logout', {
+            method: 'POST',
+            credentials: 'include'
+        })
+
+        // redirigir
+        window.location.href = '/login.html'
+
+    } catch (error) {
+        console.error('Error al cerrar sesión:', error)
+    }
+})

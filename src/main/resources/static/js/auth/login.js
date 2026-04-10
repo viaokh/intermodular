@@ -26,7 +26,7 @@ async function handleLogin(e) {
 
     // Redirección por rol
     if (user.role === "ADMIN") {
-		window.location.href = "/admin/peliculas/index.html";
+		window.location.href = "/admin/adminpanel/adminpanel.html";
 	} else {
 		window.location.href = "/peliculas/index.html";
 	}
